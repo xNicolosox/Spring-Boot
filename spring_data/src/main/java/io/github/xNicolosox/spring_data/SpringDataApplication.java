@@ -17,28 +17,28 @@ public class SpringDataApplication {
 	public CommandLineRunner init (@Autowired ClientesRepository clientes){
 		return args -> {
 			System.out.println("Salvando clientes...");
-			clientes.salvar(new Cliente("Nicolas"));
-			clientes.salvar(new Cliente("Douglas"));
-			List<Cliente> todosClientes = clientes.obter();
+			clientes.save(new Cliente("Nicolas"));
+			clientes.save(new Cliente("Douglas"));
+			List<Cliente> todosClientes = clientes.findAll();
 			todosClientes.forEach(System.out::println);
 
 			System.out.println("Atualizando clientes...");
 			todosClientes.forEach(c->{
 				c.setNome(c.getNome() + " atualizado");
-				clientes.atualizar(c);
+				clientes.save(c);
 			});
-			todosClientes = clientes.obter();
+			todosClientes = clientes.findAll();
 			todosClientes.forEach(System.out::println);
 
 			System.out.println("Buscando clientes...");
-			clientes.buscarPorNome("N").forEach(System.out::println);
+			clientes.findByNomeLike("N").forEach(System.out::println);
 
 			System.out.println("Deletando clientes...");
-			clientes.obter().forEach(c->{
-				clientes.deletar(c);
+			clientes.findAll().forEach(c->{
+				clientes.delete(c);
 			});
 
-			todosClientes = clientes.obter();
+			todosClientes = clientes.findAll();
 			if (todosClientes.isEmpty()) {
 				System.out.println("Nao existe clientes registados");
 			} else {
