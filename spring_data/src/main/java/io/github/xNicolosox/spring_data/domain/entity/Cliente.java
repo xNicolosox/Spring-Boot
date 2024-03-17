@@ -2,14 +2,28 @@ package io.github.xNicolosox.spring_data.domain.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "CLIENTE")
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    @Column(name = "id")
     private Integer id;
+    @Column (name = "nome", length = 100)
     private String nome;
+
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY) //aponta para o atributo cliente da tabela pedidos
+    private Set<Pedido> pedidos;
+
+    public void setPedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public Set<Pedido> getPedidos() {
+        return pedidos;
+    }
 
     public Cliente() {
     }
