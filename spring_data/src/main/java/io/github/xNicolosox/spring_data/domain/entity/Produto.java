@@ -8,6 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "Produto")
 public class Produto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

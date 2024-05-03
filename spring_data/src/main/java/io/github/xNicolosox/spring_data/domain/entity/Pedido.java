@@ -15,7 +15,7 @@ public class Pedido {
     @Column(name = "id")
     private Integer id;
 
-    // mapeamento de uma coluna que é fk da tabela cliente
+    //mapeamento de uma coluna que é fk da tabela cliente
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;

@@ -14,7 +14,7 @@ public class Cliente {
     @Column (name = "nome", length = 100)
     private String nome;
 
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY) //aponta para o atributo cliente da tabela pedidos
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY) //apont para o atributo cliente da tabela pedidos
     private Set<Pedido> pedidos;
 
     public void setPedidos(Set<Pedido> pedidos) {
