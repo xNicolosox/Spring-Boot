@@ -1,5 +1,4 @@
 package io.github.xNicolosox.spring_data.domain.entity;
-
 import jakarta.persistence.*;
 import java.util.Set;
 
